@@ -216,7 +216,7 @@ public abstract class Magnet extends AcceleratorNode implements MagnetType {
     public void setDfltField(double field) {
     	m_bucMagnet.setDfltField(field);
     }
-    
+   
 }
 
 

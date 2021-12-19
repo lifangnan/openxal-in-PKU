@@ -7,8 +7,6 @@
 package xal.model.elem;
 
 import xal.sim.scenario.LatticeElement;
-import xal.smf.impl.Magnet;
-import xal.smf.impl.PermQuadrupole;
 import xal.smf.impl.Quadrupole;
 import xal.tools.math.r3.R3;
 
@@ -28,7 +26,7 @@ import xal.tools.math.r3.R3;
  * @see xal.model.elem#IdealMagFringeQuadFace
  *
  */
-public class IdealMagFringeQuad extends ElectromagnetSeq {
+public class IdealPermFringeQuad extends ElectromagnetSeq {
 
 
 
@@ -48,7 +46,7 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
      */
      
     /** magnet body */
-    private IdealMagQuad    magBody = new IdealMagQuad();
+    private IdealPermMagQuad    magBody = new IdealPermMagQuad();
     
     /** magnet entrance pole face */
     private IdealMagFringeQuadFace      polEntr = new IdealMagFringeQuadFace();
@@ -67,7 +65,7 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
      * Default constructor - creates a new uninitialized instance of 
      * <code>IdealMagFringeQuad</code>.
      */
-    public IdealMagFringeQuad() {
+    public IdealPermFringeQuad() {
         this(null);
     }
 
@@ -77,7 +75,7 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
      * 
      * @param strId     instance identifier string
      */
-    public IdealMagFringeQuad(String strId) {
+    public IdealPermFringeQuad(String strId) {
         super(s_strType, strId, s_szReserve);
         
         this.addChild(this.polEntr);
@@ -139,7 +137,7 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
      * @param   dblPos      lattice position of element center (meters)
      * @param   dblLen      physical length of this element
      * 
-     * @see IdealMagFringeQuad#setPhysicalLength(double)
+     * @see IdealPermFringeQuad#setPhysicalLength(double)
      */
     public void setPosition(double dblPos, double dblLen)   {
         this.getMagBody().setPosition(dblPos);
@@ -450,7 +448,7 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
      * 
      * @return     magnet body
      */
-    private IdealMagQuad    getMagBody()    {
+    private IdealPermMagQuad    getMagBody()    {
         return this.magBody;
     }
 
@@ -463,22 +461,11 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
 	public void initializeFrom(LatticeElement element) {
 		super.initializeFrom(element);
 		
-//		Magnet magnet = null;
-		Quadrupole quadmagnet = null;
-		PermQuadrupole permquadmagnet = null;
-		double frng_intg = 0.0;
-//		Quadrupole magnet = (Quadrupole) element.getHardwareNode();
-		if(element.getHardwareNode().getClass().equals(Quadrupole.class)) {
-			quadmagnet = (Quadrupole) element.getHardwareNode();
-			frng_intg = quadmagnet.getFringeFieldIntegralK0();
-		}else {
-			permquadmagnet = (PermQuadrupole) element.getHardwareNode();
-			frng_intg = permquadmagnet.getFringeFieldIntegralK0();
-		}
+		Quadrupole magnet = (Quadrupole) element.getHardwareNode();
 		setPosition(element.getCenterPosition(), element.getLength());
 			
 		double len_sect = element.getLength();
-//		double frng_intg = magnet.getFringeFieldIntegralK0();
+		double frng_intg = magnet.getFringeFieldIntegralK0();
 		
         if (element.isFirstSlice()) // first piece
             setEntrFringeIntegral1( frng_intg );

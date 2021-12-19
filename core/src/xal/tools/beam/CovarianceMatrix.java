@@ -644,6 +644,7 @@ public class CovarianceMatrix extends PhaseMatrix {
 
         double[] arrEmitt = new double[3];
 
+//        arrEmitt[0] = java.lang.Math.sqrt( java.lang.Math.abs(ex_2) );
         arrEmitt[0] = java.lang.Math.sqrt(ex_2);
         arrEmitt[1] = java.lang.Math.sqrt(ey_2);
         arrEmitt[2] = java.lang.Math.sqrt(ez_2);
