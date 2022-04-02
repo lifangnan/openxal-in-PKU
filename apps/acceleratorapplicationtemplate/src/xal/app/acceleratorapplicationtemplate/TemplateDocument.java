@@ -17,6 +17,7 @@ import xal.model.xml.ParsingException;
 import xal.model.xml.ProbeXmlParser;
 import xal.smf.AcceleratorSeq;
 import xal.smf.AcceleratorSeqCombo;
+import xal.app.mysql2accelerator.Mysql2acceleratorWindow;
 import xal.extension.application.smf.*;
 import xal.smf.data.XMLDataManager;
 

@@ -10,6 +10,8 @@
 
 package xal.app.acceleratorapplicationtemplate;
 
+import xal.app.mysql2accelerator.Main;
+import xal.app.mysql2accelerator.Mysql2acceleratorDocument;
 import xal.extension.application.*;
 import xal.extension.application.smf.AcceleratorApplication;
 

@@ -7,6 +7,8 @@
 package xal.model.elem;
 
 import xal.sim.scenario.LatticeElement;
+import xal.smf.impl.Magnet;
+import xal.smf.impl.PermQuadrupole;
 import xal.smf.impl.Quadrupole;
 import xal.tools.math.r3.R3;
 
@@ -461,11 +463,22 @@ public class IdealMagFringeQuad extends ElectromagnetSeq {
 	public void initializeFrom(LatticeElement element) {
 		super.initializeFrom(element);
 		
-		Quadrupole magnet = (Quadrupole) element.getHardwareNode();
+//		Magnet magnet = null;
+		Quadrupole quadmagnet = null;
+		PermQuadrupole permquadmagnet = null;
+		double frng_intg = 0.0;
+//		Quadrupole magnet = (Quadrupole) element.getHardwareNode();
+		if(element.getHardwareNode().getClass().equals(Quadrupole.class)) {
+			quadmagnet = (Quadrupole) element.getHardwareNode();
+			frng_intg = quadmagnet.getFringeFieldIntegralK0();
+		}else {
+			permquadmagnet = (PermQuadrupole) element.getHardwareNode();
+			frng_intg = permquadmagnet.getFringeFieldIntegralK0();
+		}
 		setPosition(element.getCenterPosition(), element.getLength());
 			
 		double len_sect = element.getLength();
-		double frng_intg = magnet.getFringeFieldIntegralK0();
+//		double frng_intg = magnet.getFringeFieldIntegralK0();
 		
         if (element.isFirstSlice()) // first piece
             setEntrFringeIntegral1( frng_intg );

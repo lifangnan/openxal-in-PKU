@@ -123,4 +123,10 @@ public class PermQuadrupole extends PermanentMagnet {
     public boolean isKindOf(String compType) {
         return compType.equalsIgnoreCase(this.type) || super.isKindOf(compType);
     }
+    
+    
+    /**get fringe field integral*/
+    public double getFringeFieldIntegralK0() {
+    	return m_bucMagnet.getFringeFieldIntegralK0();
+    }
 }

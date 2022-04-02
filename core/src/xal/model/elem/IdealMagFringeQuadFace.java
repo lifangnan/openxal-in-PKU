@@ -207,7 +207,7 @@ public class IdealMagFringeQuadFace extends ThinElectromagnet {
         
         double Er = probe.getSpeciesRestEnergy();
         double w = probe.getKineticEnergy();
-        double p = Math.sqrt(w*(w+2*Er));
+        double p = Math.sqrt(w*(w+2*Er));  // 这里的p是我们通常理解的pc，动量乘以光速 
         double q = probe.getSpeciesCharge();
         
         //normalized fringeIntergral with B0 = 1

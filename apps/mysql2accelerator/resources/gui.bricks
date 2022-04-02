@@ -1,0 +1,121 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BricksDocument date="Tue Mar 29 20:41:13 CST 2022" version="1.0.0">
+    <RootBrick>
+        <ViewNode customBeanClass="xal.extension.application.smf.DefaultAcceleratorWindow" height="750" tag="MainWindow" width="1537">
+            <ViewProxy type="javax.swing.JFrame"/>
+            <BeanProperty name="locationByPlatform" value="false"/>
+            <BeanProperty name="state" value="0"/>
+            <BeanProperty name="title" value="Database to Accelerator"/>
+            <BeanProperty height="750" name="minimumSize" width="800"/>
+            <BeanProperty fontName="Dialog" name="font" size="12" style="0"/>
+            <ViewNode tag="MainView">
+                <ViewProxy type="javax.swing.Box_Vertical"/>
+                <BeanProperty height="3000" name="preferredSize" width="3000"/>
+                <BeanProperty height="100000" name="maximumSize" width="100000"/>
+                <BeanProperty name="requestFocusEnabled" value="true"/>
+                <BeanProperty height="800" name="minimumSize" width="800"/>
+                <ViewNode tag="Above Box">
+                    <ViewProxy type="javax.swing.Box_Vertical"/>
+                    <BeanProperty height="200" name="preferredSize" width="2000"/>
+                    <BeanProperty height="10000" name="maximumSize" width="10000"/>
+                    <BeanProperty name="opaque" value="false"/>
+                    <BeanProperty name="requestFocusEnabled" value="true"/>
+                    <ViewNode tag="Link to MySQL">
+                        <ViewProxy type="javax.swing.JButton"/>
+                        <BeanProperty bottom="2" left="14" name="margin" right="14" top="2"/>
+                        <BeanProperty name="horizontalAlignment" value="0"/>
+                        <BeanProperty name="opaque" value="true"/>
+                        <BeanProperty height="28" name="minimumSize" width="116"/>
+                        <BeanProperty name="iconTextGap" value="4"/>
+                        <BeanProperty height="28" name="maximumSize" width="116"/>
+                        <BeanProperty name="mnemonic" value="0"/>
+                        <BeanProperty name="label" value="Link to MySQL"/>
+                        <BeanProperty name="horizontalTextPosition" value="11"/>
+                        <BeanProperty fontName="Dialog" name="font" size="12" style="1"/>
+                        <BeanProperty name="focusPainted" value="false"/>
+                    </ViewNode>
+                </ViewNode>
+                <ViewNode tag="Below Box">
+                    <ViewProxy type="javax.swing.Box_Vertical"/>
+                    <BeanProperty height="1200" name="preferredSize" width="2000"/>
+                    <BeanProperty height="10000" name="maximumSize" width="10000"/>
+                    <ViewNode tag="Split Pane">
+                        <ViewProxy type="javax.swing.JSplitPane"/>
+                        <BeanProperty height="2000" name="preferredSize" width="2000"/>
+                        <BeanProperty height="56" name="minimumSize" width="332"/>
+                        <ViewNode tag="Database Box">
+                            <ViewProxy type="javax.swing.Box_Horizontal"/>
+                            <BeanProperty height="1200" name="preferredSize" width="1000"/>
+                            <BeanProperty height="65534" name="maximumSize" width="32955"/>
+                            <BeanProperty height="300" name="minimumSize" width="300"/>
+                            <BeanProperty fontName="Dialog" name="font" size="12" style="0"/>
+                            <ViewNode tag="Database Data Box">
+                                <ViewProxy type="javax.swing.Box_Vertical"/>
+                                <BeanProperty height="300" name="minimumSize" width="300"/>
+                                <ViewNode tag="Left Control Box">
+                                    <ViewProxy type="javax.swing.Box_Vertical"/>
+                                    <ViewNode tag="Refresh Database Button">
+                                        <ViewProxy type="javax.swing.JButton"/>
+                                        <BeanProperty height="28" name="maximumSize" width="80"/>
+                                        <BeanProperty bottom="2" left="14" name="margin" right="14" top="2"/>
+                                        <BeanProperty name="horizontalTextPosition" value="11"/>
+                                        <BeanProperty name="label" value="Refresh"/>
+                                    </ViewNode>
+                                </ViewNode>
+                                <ViewNode tag="Left Table Box">
+                                    <ViewProxy type="javax.swing.Box_Vertical"/>
+                                    <ViewNode tag="Left Scroll Pane">
+                                        <ViewProxy type="javax.swing.JScrollPane"/>
+                                        <ViewNode tag="Database Table">
+                                            <ViewProxy type="javax.swing.JTable"/>
+                                        </ViewNode>
+                                    </ViewNode>
+                                </ViewNode>
+                            </ViewNode>
+                            <ViewNode tag="Send Data Box">
+                                <ViewProxy type="javax.swing.Box_Horizontal"/>
+                                <ViewNode tag="Send Data Button">
+                                    <ViewProxy type="javax.swing.JButton"/>
+                                    <BeanProperty name="label" value=">>"/>
+                                </ViewNode>
+                            </ViewNode>
+                        </ViewNode>
+                        <ViewNode tag="Horizontal Box">
+                            <ViewProxy type="javax.swing.Box_Horizontal"/>
+                            <BeanProperty height="1200" name="preferredSize" width="1000"/>
+                            <BeanProperty height="300" name="minimumSize" width="300"/>
+                            <ViewNode tag="Accelerator Data Box">
+                                <ViewProxy type="javax.swing.Box_Vertical"/>
+                                <BeanProperty height="32795" name="maximumSize" width="32767"/>
+                                <BeanProperty height="50" name="minimumSize" width="90"/>
+                                <ViewNode tag="Right Control Box">
+                                    <ViewProxy type="javax.swing.Box_Horizontal"/>
+                                    <ViewNode tag="Panel">
+                                        <ViewProxy type="javax.swing.JPanel"/>
+                                    </ViewNode>
+                                    <ViewNode tag="Check All">
+                                        <ViewProxy type="javax.swing.JButton"/>
+                                        <BeanProperty name="label" value="Check All"/>
+                                    </ViewNode>
+                                    <ViewNode tag="Uncheck All">
+                                        <ViewProxy type="javax.swing.JButton"/>
+                                        <BeanProperty name="label" value="Uncheck All"/>
+                                    </ViewNode>
+                                </ViewNode>
+                                <ViewNode tag="Right Table Box">
+                                    <ViewProxy type="javax.swing.Box_Vertical"/>
+                                    <ViewNode tag="Right Scroll Pane">
+                                        <ViewProxy type="javax.swing.JScrollPane"/>
+                                        <ViewNode tag="Accelerator Table">
+                                            <ViewProxy type="javax.swing.JTable"/>
+                                        </ViewNode>
+                                    </ViewNode>
+                                </ViewNode>
+                            </ViewNode>
+                        </ViewNode>
+                    </ViewNode>
+                </ViewNode>
+            </ViewNode>
+        </ViewNode>
+    </RootBrick>
+</BricksDocument>
