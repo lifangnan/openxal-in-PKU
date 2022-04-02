@@ -8,7 +8,7 @@
  * Oak Ridge, TN 37830
  */
 
-package xal.app.acceleratorapplicationtemplate;
+package xal.app.mysql2accelerator;
 
 import xal.tools.data.DataAdaptor;
 import xal.tools.xml.XmlDataAdaptor;
@@ -18,7 +18,9 @@ import xal.model.xml.ProbeXmlParser;
 import xal.smf.AcceleratorSeq;
 import xal.smf.AcceleratorSeqCombo;
 import xal.app.mysql2accelerator.Mysql2acceleratorWindow;
+import xal.extension.application.XalWindow;
 import xal.extension.application.smf.*;
+import xal.extension.bricks.WindowReference;
 import xal.smf.data.XMLDataManager;
 
 import java.io.File;
@@ -36,9 +38,15 @@ import javax.swing.JOptionPane;
  *
  * @author  somebody
  */
-class TemplateDocument extends AcceleratorDocument {
+class Mysql2acceleratorDocument extends AcceleratorDocument {
+	
+	/** main window reference */
+	final WindowReference WINDOW_REFERENCE;
+	/** controller */
+	final Mysql2acceleratorController APP_CONTROLLER;
+	
 	/** Create a new empty document */
-    public TemplateDocument() {
+    public Mysql2acceleratorDocument() {
         this(null);
     }
     
@@ -47,8 +55,13 @@ class TemplateDocument extends AcceleratorDocument {
      * Create a new document loaded from the URL file 
      * @param url The URL of the file to load into the new document.
      */
-    public TemplateDocument(java.net.URL url) {
+    public Mysql2acceleratorDocument(java.net.URL url) {
         setSource(url);
+        
+        WINDOW_REFERENCE = getDefaultWindowReference( "MainWindow", this );
+        APP_CONTROLLER = new Mysql2acceleratorController(this, WINDOW_REFERENCE);
+        
+        
     }
     
     
@@ -56,11 +69,12 @@ class TemplateDocument extends AcceleratorDocument {
      * Make a main window by instantiating the my custom window.
      */
     public void makeMainWindow() {
-        mainWindow = new TemplateWindow(this);
+    	mainWindow = (XalWindow)WINDOW_REFERENCE.getWindow();
+//        mainWindow = new TemplateWindow(this);
 		if (getSource() != null) {
 			XmlDataAdaptor xda = XmlDataAdaptor.adaptorForUrl(getSource(),
 					false);
-			DataAdaptor da1 = xda.childAdaptor("AcceleratorApplicationTemplate");
+			DataAdaptor da1 = xda.childAdaptor("Mysql2acceleratorApplication");
 
 			//restore accelerator file
 			this.setAcceleratorFilePath(da1.childAdaptor("accelerator")
@@ -107,7 +121,7 @@ class TemplateDocument extends AcceleratorDocument {
      */
     public void saveDocumentAs(URL url) {
 		XmlDataAdaptor xda = XmlDataAdaptor.newEmptyDocumentAdaptor();
-		DataAdaptor daLevel1 = xda.createChild("AcceleratorApplicationTemplate");
+		DataAdaptor daLevel1 = xda.createChild("Mysql2acceleratorApplication");
 		//save accelerator file
 		DataAdaptor daXMLFile = daLevel1.createChild("accelerator");
 		try {
@@ -143,7 +157,7 @@ class TemplateDocument extends AcceleratorDocument {
     
 	public void acceleratorChanged() {
 		if (accelerator != null) {
-
+//			System.out.println(accelerator.getId());
 			setHasChanges(true);
 		}
 	}
@@ -151,6 +165,7 @@ class TemplateDocument extends AcceleratorDocument {
 	public void selectedSequenceChanged() {
 		if (selectedSequence != null) {
 			System.out.println("Sequence selected: " + selectedSequence.getId());
+			APP_CONTROLLER.updateAcceleratorTableView();
 			setHasChanges(true);
 		}
 	}

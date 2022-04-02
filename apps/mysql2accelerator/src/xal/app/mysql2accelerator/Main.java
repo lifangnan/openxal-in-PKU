@@ -8,7 +8,9 @@
  * Oak Ridge, TN 37830
  */
 
-package xal.app.acceleratorapplicationtemplate;
+package xal.app.mysql2accelerator;
+
+import java.sql.SQLException;
 
 import xal.app.mysql2accelerator.Main;
 import xal.app.mysql2accelerator.Mysql2acceleratorDocument;
@@ -29,7 +31,7 @@ public class Main extends ApplicationAdaptor {
      * @return Suffixes of readable files
      */
     public String[] readableDocumentTypes() {
-        return new String[] {"txt"};
+        return new String[] {"m2a"};
     }
     
     
@@ -38,16 +40,17 @@ public class Main extends ApplicationAdaptor {
      * @return Suffixes of writable files
      */
     public String[] writableDocumentTypes() {
-        return new String[] {"txt"};
+        return new String[] {"m2a"};
     }
     
     
     /**
      * Implement this method to return an instance of my custom document.
      * @return An instance of my custom document.
+     * @throws SQLException 
      */
     public XalDocument newEmptyDocument() {
-        return new TemplateDocument();
+        return new Mysql2acceleratorDocument();
     }
     
     
@@ -56,9 +59,10 @@ public class Main extends ApplicationAdaptor {
      * corresponding to the specified URL.
      * @param url The URL of the file to open.
      * @return An instance of my custom document.
+     * @throws SQLException 
      */
     public XalDocument newDocument(java.net.URL url) {
-        return new TemplateDocument(url);
+        return new Mysql2acceleratorDocument(url);
     }
     
     
